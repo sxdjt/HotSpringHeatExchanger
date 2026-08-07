@@ -3,6 +3,9 @@
     <name>Hot Spring Heat Exchanger</name>
     <author>sxdjt</author>
     <packageId>sxdjt.hotspringheatexchanger</packageId>
+    <!-- Mod's own version, independent of the game version in supportedVersions.
+         Keep this in step with CHANGELOG.md and the release tag. -->
+    <modVersion>1.0.0</modVersion>
     <description>Adds a heat exchanger that can be built directly in a hot spring. It feeds the Dubs Bad Hygiene hot water network with no fuel and no power, so showers, baths and radiators can run off geothermal spring heat.
 
 Requirements:
