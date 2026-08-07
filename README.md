@@ -46,6 +46,10 @@ The building inherits from Dubs Bad Hygiene's `BasedHygieneMom` and is modelled 
 `GeothermHeater`, with one substitution: it uses the base `DubsBadHygiene.CompBoiler` instead of
 `CompGeoBoiler`. 
 
+## AI
+
+Yes, Claude Code was used to build this.  I have 3K hours in-game and spent quite a bit of time getting this to work properly.
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
