@@ -25,7 +25,6 @@ Copy the mod folder into your RimWorld `Mods` directory, then enable it in the m
 
 ## The building
 
-| | |
 |---|---|
 | Research | Geothermal Heating |
 | Cost | 25 steel |
