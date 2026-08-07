@@ -2,7 +2,7 @@
 
 # Hot Spring Heat Exchanger
 
-A RimWorld 1.6 mod that adds a heat exchanger buildable directly in a hot spring. It feeds the
+A RimWorld 1.6 mod that adds a heat exchanger directly in a hot spring. It feeds the
 Dubs Bad Hygiene hot water network with no fuel and no power, so showers, baths and radiators can
 run off geothermal spring heat.
 
@@ -12,14 +12,12 @@ run off geothermal spring heat.
 
 - [Dubs Bad Hygiene](https://steamcommunity.com/sharedfiles/filedetails/?id=836308268)
 - RimWorld: Odyssey
-- RimWorld 1.6
 
 Load this mod after Odyssey and DBH.
 
 ## Installation
 
-Copy the mod folder into your RimWorld `Mods` directory, then enable it in the mod list below
-Dubs Bad Hygiene and Odyssey.
+Copy the mod folder into your RimWorld `Mods` directory, then enable it in the mod list below Dubs Bad Hygiene and Odyssey.
 
 - Windows: `steamapps\common\RimWorld\Mods\`
 - macOS: `steamapps/common/RimWorld/RimWorldMac.app/Mods/`
@@ -33,7 +31,7 @@ Dubs Bad Hygiene and Odyssey.
 | Cost | 25 steel |
 | Work to build | 150 |
 | Placement | Hot spring water only |
-| Output | 250 units to the Sewage pipe network |
+| Output | 250 units |
 | Fuel / power | None |
 
 Output is deliberately modest, matching the electric boiler's base capacity. 
