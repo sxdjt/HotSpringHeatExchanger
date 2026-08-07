@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Marks terrain carrying geothermally heated water that a heat exchanger
+       can tap.
+
+       This affordance is granted to exactly one terrain (Odyssey's HotSpring,
+       see Patches/Patch_HotSpringAffordance.xml). Any building that declares
+       <terrainAffordanceNeeded>HotSpringTappable</terrainAffordanceNeeded>
+       therefore becomes placeable on hot spring water and nowhere else.
+
+       Requiring a custom affordance instead of the usual "Light" is also what
+       removes the need for a bridge: water terrain blocks construction only
+       because it lacks the Light affordance that buildings normally ask for. -->
+  <TerrainAffordanceDef>
+    <defName>HotSpringTappable</defName>
+    <label>hot spring water</label>
+    <!-- Sort position in the "requires terrain that supports: ..." UI text.
+         2250 sits between the vanilla water affordances ShallowWater (2200)
+         and MovingFluid (2300) so it reads alongside them. -->
+    <order>2250</order>
+  </TerrainAffordanceDef>
+
+</Defs>

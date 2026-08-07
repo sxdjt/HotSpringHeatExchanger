@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!-- Grant the HotSpringTappable affordance to Odyssey's hot spring terrain.
+
+       HotSpring does not declare an <affordances> node of its own; it inherits
+       one from the abstract WaterShallowBase (ShallowWater, WaterproofConduitable,
+       Bridgeable, Walkable). Patches are applied to the raw XML before def
+       inheritance is resolved, so adding a one-entry <affordances> node here is
+       merged with the inherited list rather than replacing it. Vanilla does the
+       same thing with WaterMovingShallow, which declares only <li>MovingFluid</li>
+       and still ends up walkable and bridgeable.
+
+       PatchOperationAdd rather than Replace so nothing another mod has done to
+       this terrain gets clobbered. -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>/Defs/TerrainDef[defName="HotSpring"]</xpath>
+    <value>
+      <affordances>
+        <li>HotSpringTappable</li>
+      </affordances>
+    </value>
+  </Operation>
+
+</Patch>

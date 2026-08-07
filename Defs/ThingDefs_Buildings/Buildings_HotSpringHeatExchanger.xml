@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <!-- Structured after Dubs Bad Hygiene's GeothermHeater, which is the same idea
+       built on a steam geyser. Two deliberate differences:
+
+       1. GeothermHeater's boiler comp class is DubsBadHygiene.CompGeoBoiler, which
+          resolves an actual Building_SteamGeyser at runtime. That would find
+          nothing on a hot spring, so this uses the base CompBoiler instead. The
+          base comp is what LogBoiler, GasBoiler and ElectricBoiler all use; those
+          are throttled by a separate refuelable or power comp. Omitting both means
+          this one simply always runs, which is the intended behaviour for tapping
+          a spring.
+
+       2. Placement is gated by the HotSpringTappable terrain affordance rather
+          than PlaceWorker_OnSteamGeyser, so it needs no C# and no bridge. -->
+  <ThingDef ParentName="BasedHygieneMom">
+    <defName>HotSpringHeatExchanger</defName>
+    <label>hot spring heat exchanger</label>
+    <description>A coil of piping sunk directly into a hot spring. Geothermally heated spring water warms the loop, which feeds hot water tanks and radiators without fuel or power. Must be built on hot spring water.</description>
+    <designationCategory>Temperature</designationCategory>
+
+    <!-- Custom art: 128x128 PNG at 128 pixels per tile, the modern baseline.
+
+         Texture paths resolve from the Textures folder down, so the file at
+         Textures/sxdjt/HotSpringHeatExchanger.png is referenced here as
+         sxdjt/HotSpringHeatExchanger. Every mod shares one texture namespace,
+         hence the sxdjt/ prefix: an unprefixed path risks being silently
+         overwritten by whichever mod loads last. -->
+    <graphicData>
+      <texPath>sxdjt/HotSpringHeatExchanger</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <drawSize>(1,1)</drawSize>
+      <shadowData>
+        <volume>(0.5, 0.5, 0.5)</volume>
+      </shadowData>
+    </graphicData>
+
+    <!-- Overrides the Light affordance inherited from BasedHygieneMom. This is
+         the whole placement rule: only hot spring water carries this affordance. -->
+    <terrainAffordanceNeeded>HotSpringTappable</terrainAffordanceNeeded>
+
+    <size>(1,1)</size>
+    <!-- Graphic_Single has no per-direction variants, so rotation would only add
+         a pointless rotate prompt at placement time. To make it rotatable, add
+         _north/_east/_south files and switch to Graphic_Multi (west mirrors east
+         automatically). -->
+    <rotatable>false</rotatable>
+    <blockWind>false</blockWind>
+    <castEdgeShadows>false</castEdgeShadows>
+    <pathCost>150</pathCost>
+
+    <!-- Cheap to build and cheap to place in numbers: output is only 250 units,
+         so a bathhouse of any size wants several of these strung along the
+         spring rather than one expensive unit. -->
+    <costList>
+      <Steel>25</Steel>
+    </costList>
+
+    <statBases>
+      <MaxHitPoints>200</MaxHitPoints>
+      <WorkToBuild>150</WorkToBuild>
+      <Mass>50</Mass>
+    </statBases>
+
+    <comps>
+      <!-- DBH runs its hot water and heating loop on the Sewage pipe network,
+           the same one every other boiler connects to. -->
+      <li Class="DubsBadHygiene.CompProperties_Pipe">
+        <mode>Sewage</mode>
+      </li>
+
+      <!-- No compClass override, so this is the base DubsBadHygiene.CompBoiler.
+           250 units is deliberately modest, matching the electric boiler's base
+           output: this runs on free ambient spring heat with no fuel and no
+           power, so a low ceiling is what keeps it from obsoleting the boilers
+           that do cost something. Enough for a small bathhouse; a large one
+           needs several units or a real boiler alongside. -->
+      <li Class="DubsBadHygiene.CompProperties_CompBoiler">
+        <BaseCapacity>250</BaseCapacity>
+        <ThermostatControl>false</ThermostatControl>
+      </li>
+
+      <li Class="CompProperties_Flickable"/>
+      <li Class="CompProperties_Breakdownable"/>
+    </comps>
+
+    <researchPrerequisites>
+      <li>GeothermalHeating</li>
+    </researchPrerequisites>
+  </ThingDef>
+
+</Defs>

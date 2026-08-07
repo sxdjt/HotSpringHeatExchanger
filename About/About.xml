@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+    <name>Hot Spring Heat Exchanger</name>
+    <author>sxdjt</author>
+    <packageId>sxdjt.hotspringheatexchanger</packageId>
+    <description>Adds a heat exchanger that can be built directly in a hot spring. It feeds the Dubs Bad Hygiene hot water network with no fuel and no power, so showers, baths and radiators can run off geothermal spring heat.
+
+Requirements:
+- Dubs Bad Hygiene
+- RimWorld: Odyssey
+
+Load after Dubs Bad Hygiene.</description>
+    <supportedVersions>
+        <li>1.6</li>
+    </supportedVersions>
+    <modDependencies>
+        <li>
+            <packageId>Dubwise.DubsBadHygiene</packageId>
+            <displayName>Dubs Bad Hygiene</displayName>
+            <steamWorkshopUrl>steam://url/CommunityFilePage/836308268</steamWorkshopUrl>
+        </li>
+        <li>
+            <packageId>Ludeon.RimWorld.Odyssey</packageId>
+            <displayName>RimWorld - Odyssey</displayName>
+        </li>
+    </modDependencies>
+    <!-- The building def inherits from BasedHygieneMom and references DBH comp
+         classes, so Dubs Bad Hygiene must be fully loaded first. Odyssey must
+         load first because the patch targets its HotSpring terrain def. -->
+    <loadAfter>
+        <li>Dubwise.DubsBadHygiene</li>
+        <li>Ludeon.RimWorld.Odyssey</li>
+    </loadAfter>
+</ModMetaData>
